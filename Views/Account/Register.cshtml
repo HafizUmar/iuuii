@@ -1,0 +1,190 @@
+﻿@model BCharityTHeme.Models.Tbl_Registeration
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_registerLayout.cshtml";
+}
+
+
+
+
+<!-- Sign up form -->
+@*//////////////////////////////////////////////////////*@
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Sign up</h2>
+
+                @using (Html.BeginForm( "Register", "Account",FormMethod.Post))
+                {
+                   
+
+			<div class="form-horizontal">
+
+				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+				<div class="form-group">
+					<label for=@Model.FirstName><i class="zmdi zmdi-account material-icons-name"></i></label>
+
+					@*@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First Name" } })
+						@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label for=@Model.LastName><i class="zmdi zmdi-account material-icons-name"></i></label>
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name" } })
+						@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="@Model.EmailID"><i class="zmdi zmdi-email"></i></label>
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+						@Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+						@Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="@Model.Address"><i class="zmdi zmdi-account"></i></label>
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Address" } })
+						@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+						
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="@Model.City"><i class="zmdi zmdi-email"></i></label>
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @placeholder = "City" } })
+						@Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+						
+					</div>
+				</div>
+				@*<div class="form-group">
+			@Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+			</div>
+		</div>*@
+				<div class="form-group">
+					<label for="@Model.Password"><i class="zmdi zmdi-lock"></i></label>
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control keyUpPassw", @placeholder = "Password" } })
+						<div class="col-sm-3"><Label id="lblPasswordStrength"></Label></div>
+						@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="@Model.ConfirmPassword"><i class="zmdi zmdi-lock-outline"></i></label>
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password" } })
+						@Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				@*<div class="form-group">
+			<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+			<label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+		</div>*@
+				@*<div class="form-group form-button">
+			<input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+		</div>*@
+
+
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<input type="submit" value="Create" class="btn btn-default" />
+					</div>
+				</div>
+			</div>
+                    if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong>@ViewBag.Message
+                        </div>
+                    }
+                }
+
+
+                @*/////////////////////////////////////////////////*@
+
+            </div>
+            <div class="signup-image">
+                <figure><img src="~/Content/LoginANDRegister/images/signup-image.jpg" alt="sing up image"></figure>
+                @*<a href="#" class="signup-image-link">I am already member</a>*@
+
+                Have Already Account ?   @Html.ActionLink("Log in", "Login", "User")
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+       
+
+            $(".keyUpPassw").keyup(function () {
+              
+            var value = $('#Password').val();
+
+            var score = 0;
+            var status = "";
+            var specialChars = "<>@@!#$%^&*()_+[]{}?:;|'\"\\,./~`-="
+            if (value.toString().length >= 8) {
+
+                if (/[a-z]/.test(value)) {
+                    score += 1;
+                }
+                if (/[A-Z]/.test(value)) {
+                    score += 1;
+                }
+                if (/\d/.test(value)) {
+                    score += 1;
+                }
+                for (i = 0; i < specialChars.length; i++) {
+                    if (value.indexOf(specialChars[i]) > -1) {
+                        score += 1;
+                    }
+                }
+            }
+            else {
+                score = 1;
+            }
+
+            if (score == 2) {
+                status = status = "<span style='color:#CCCC00'>Medium</span>";
+            }
+            else if (score == 3) {
+                status = "<span style='color:#0DFF5B'>Strong</span>";
+            }
+            else if (score >= 4) {
+                status = "<span style='color:#009933'>Very Strong</span>";
+            }
+            else {
+
+                status = "<span style='color:red'>Week</span>";
+            }
+            if (value.toString().length > 0) {
+                $('#lblPasswordStrength').html("Status :<span> " + status + "</span>");
+            }
+            else {
+                $('#lblPasswordStrength').html("");
+            }
+       //alert("keyup");
+    });
+    </script>
+}
+

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/Content/LoginANDRegister/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/Content/LoginANDRegister/css/style.css">
+</head>
+<body style="background: url(/Content/Login/images/Login_2.jpg) no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+
+    <div class="main" style="background:none">
+
+        @RenderBody()
+
+
+    </div>
+
+    <!-- JS -->
+    <script src="~/Content/LoginANDRegister/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/LoginANDRegister/js/main.js"></script>
+
+    @RenderSection("Scripts", false);
+</body>
+</html>

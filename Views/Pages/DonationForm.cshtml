@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "DonationForm";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+	<head>
+		<style>
+			/*body {
+				background: url('https://static-communitytable.parade.com/wp-content/uploads/2014/03/rethink-target-heart-rate-number-ftr.jpg') fixed;
+				background-size: cover;
+			}*/
+
+			*[role="form"] {
+				max-width: 530px;
+				padding: 15px;
+				margin: 0 auto;
+				border-radius: 0.3em;
+				background-color: #f2f2f2;
+			}
+
+				*[role="form"] h2 {
+					font-family: 'Open Sans', sans-serif;
+					font-size: 40px;
+					font-weight: 600;
+					color: #000000;
+					margin-top: 5%;
+					text-align: center;
+					text-transform: uppercase;
+					letter-spacing: 4px;
+				}
+		</style>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		<!------ Include the above in your HEAD tag ---------->
+	</head>
+<body>
+
+	
+
+
+
+
+</body>
+<script>
+	$(function(){
+	$.validator.setDefaults({
+		highlight: function(element){
+			$(element)
+			.closest('.form-group')
+			.addClass('has-error')
+		},
+		unhighlight: function(element){
+			$(element)
+			.closest('.form-group')
+			.removeClass('has-error')
+		}
+	});
+	
+	$.validate({
+		rules:
+		{	
+		    password: "required",
+			birthDate: "required",
+			weight: {
+			    required:true,
+			    number:true
+			},
+			height:  {
+			    required:true,
+			    number:true
+			},
+			email: {
+				required: true,
+				email: true
+			}
+		},
+			messages:{			
+				email: {
+				required: true,
+				email: true
+			}
+		},
+				password: {
+					required: " Please enter password"
+				},
+				birthDate: {
+					required: " Please enter birthdate"
+				},
+				email: {
+					required: ' Please enter email',
+					email: ' Please enter valid email'
+				},
+				weight: {
+					required: " Please enter your weight",
+					number: " Only numbers allowed"
+				},
+				height: {
+					required: " Please enter your height",
+					number: " Only numbers allowed"
+				},
+			}
+			
+	});
+});
+</script>
