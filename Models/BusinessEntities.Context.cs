@@ -26,6 +26,8 @@ namespace BCharityTHeme.Models
         }
     
         public virtual DbSet<Tbl_Registeration> Tbl_Registeration { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tbl_Donation> Tbl_Donation { get; set; }
+        public virtual DbSet<Tbl_PayPalPayment> Tbl_PayPalPayment { get; set; }
     }
 }

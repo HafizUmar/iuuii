@@ -170,6 +170,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
@@ -193,10 +195,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DonationPaymentModel.cs" />
     <Compile Include="Models\Extended\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tbl_Donation.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_PayPalPayment.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_Registeration.cs">
@@ -1237,9 +1246,15 @@
     <Content Include="Views\Pages\DonationForm.cshtml" />
     <Content Include="Views\Pages\_AmountPV.cshtml" />
     <Content Include="Views\Pages\_OtherTypePV.cshtml" />
+    <Content Include="Views\Dashboard\UserDashboard.cshtml" />
+    <Content Include="Views\Donation\myDonations.cshtml" />
+    <Content Include="Views\Donation\myInProgressDonations.cshtml" />
+    <Content Include="Views\Donation\myReceivedDonations.cshtml" />
+    <Content Include="Views\Donation\DonationForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -1256,6 +1271,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppHelper\AppHelper.csproj">
+      <Project>{9e843469-770a-473a-b8ff-e7d6921a585c}</Project>
+      <Name>AppHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

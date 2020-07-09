@@ -23,16 +23,7 @@ namespace BCharityTHeme.Controllers
         }
 
 		//[HttpPost]
-		public ActionResult AddDonation(Tbl_Donation model)
-		{
-
-			model.CreatedBy = "Umar";
-			model.CreatedDate = DateTime.Now;
-			context.Tbl_Donation.Add(model);
-
-			context.SaveChanges();
-			return View();
-		}
+		
 
 		public ActionResult TypeChange(string type)
 		{

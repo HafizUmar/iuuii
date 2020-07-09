@@ -5,8 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="82f1566f639c437d8fdfa7e6a2a86e36" Name="Diagram1">
-        <EntityTypeShape EntityType="DonationDbModel.Tbl_Registeration" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DonationDbModel.Tbl_Donation" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DonationDbModel.Tbl_Registeration" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DonationDbModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DonationDbModel.Tbl_Donation" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="DonationDbModel.Tbl_PayPalPayment" Width="1.5" PointX="8" PointY="1.875" />
+        <AssociationConnector Association="DonationDbModel.FK_Tbl_PayPalPayment_Tbl_Donation" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

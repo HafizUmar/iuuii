@@ -85,6 +85,8 @@ namespace BCharityTHeme.Controllers
 											 where (s.EmailID == model.Email && s.Password == Password)
 											 select s).SingleOrDefault();
 
+			Session["LoginID"] = resultt.ID;
+
 			if (resultt == null)
 			{
 				ModelState.AddModelError("", "Invalid login attempt.");
@@ -170,6 +172,7 @@ namespace BCharityTHeme.Controllers
         public ActionResult Register()
         {
 			Tbl_Registeration _user = new Tbl_Registeration();
+			ViewBag.RegisteredAs = AppHelper.DDLHelper.GetRegisteredAsList();
 			return View(_user);
         }
 
@@ -227,7 +230,7 @@ namespace BCharityTHeme.Controllers
 
 			ViewBag.Message = message;
 			ViewBag.Status = Status;
-			return View(user);
+			return View("Register", user);
 		}
 
 		//

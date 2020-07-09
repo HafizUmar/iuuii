@@ -17,7 +17,12 @@ namespace BCharityTHeme.Models
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName { get; set; }
         public string EmailID { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string RegisteredAs { get; set; }
+        public string Address { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Password { get; set; }
         public Nullable<bool> IsEmailVerified { get; set; }
@@ -28,8 +33,5 @@ namespace BCharityTHeme.Models
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
-        public string Country { get; set; }
-        public string City { get; set; }
-        public string Address { get; set; }
     }
 }

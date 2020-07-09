@@ -25,7 +25,7 @@
     Welcome @HttpContext.Current.User.Identity.Name
     @if (Request.IsAuthenticated)
     {
-        using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
+        using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
         {
             <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
         }
@@ -48,55 +48,17 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav flex-column">
-                            <li class="nav-divider">
-                                Menu
-                            </li>
+                            
                             <li class="nav-item ">
                                 <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-											<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">Total Donation Dashboard</a>
-                                            <div id="submenu-1-2" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    @*<li class="nav-item">
-                                                        <a class="nav-link" href="index.html">Total Donation Dashboard</a>
-                                                    </li>*@
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product.html">Received</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-single.html">In Process</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-checkout.html">Not Used</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        @*<li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Finance</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Sales</a>
-                                        </li>*@
-                                        <li class="nav-item">
-                                            @*<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>*@
-                                            <div id="submenu-1-1" class="collapse submenu" style="">
-                                                @*<ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="dashboard-influencer.html">Influencer</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-finder.html">Influencer Finder</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-profile.html">Influencer Profile</a>
-                                                    </li>
-                                                </ul>*@
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    
+                                        
+											<a class="nav-link" href="@Url.Action("userdashboard","dashboard")">Total Donation Dashboard</a>
+                                            
+                                       
+                                        
+                                    
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -132,13 +94,13 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-c3.html">Received</a>
+                                            <a class="nav-link" href="@Url.Action("myReceivedDonations","Donation")">Received</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-chartist.html">In Process</a>
+                                            <a class="nav-link" href="@Url.Action("myInProgressDonations","Donation")">In Process</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-charts.html">Not Used</a>
+                                            <a class="nav-link" href="@Url.Action("myDonations","Donation")">Not Used</a>
                                         </li>
                                         @*<li class="nav-item">
                                             <a class="nav-link" href="pages/chart-morris.html">Morris</a>
@@ -334,8 +296,8 @@
         <!-- wrapper  -->
         <!-- ============================================================== -->
         <div class="dashboard-wrapper">
-            <div class="dashboard-ecommerce">
-                <div class="container-fluid dashboard-content ">
+            
+                
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
@@ -359,8 +321,8 @@
                     <!-- end pageheader  -->
                     <!-- ============================================================== -->
                     @RenderBody()
-                </div>
-            </div>
+                
+            
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
@@ -368,7 +330,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            Copyright © 2020 Concept. All rights reserved. Dashboard by S&N Development Team.
+                            Copyright © 2020 Concept. All rights reserved. Dashboard by IIUI Development Team.
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="text-md-right footer-links d-none d-sm-block">
